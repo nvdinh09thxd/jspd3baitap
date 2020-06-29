@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vinaenter - Register</title>
+	<title>Vinaenter - Information</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -24,62 +22,39 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<%
-		String err="";
-		String name="";
-		String address="";
-		
-		if(request.getParameter("err")!=null){
-			err = request.getParameter("err");
-		}
-		
-		if(request.getAttribute("name")!=null){
-			name = (String) request.getAttribute("name");
-		}
-		
-		if(request.getAttribute("address")!=null){
-	 		address = (String) request.getAttribute("address");
-		}
-	%>
 
 	<div class="bg-contact3" style="background-image: url('<%=request.getContextPath() %>/vne_baitap/images/bg-01.jpg');">
 		<div class="container-contact3">
 			<div class="wrap-contact3">
-				<form class="contact3-form validate-form" action="<%=request.getContextPath()%>/RegUserController" method="POST">
+				<form class="contact3-form validate-form">
 					<span class="contact3-form-title">
-						Register User
+						Information User
 					</span>
-					<%
-						if("1".equals(err)) out.print("<p style='color: red;'> Tên đăng nhập không được để trống!</p>");
-						else if("2".equals(err)) out.print("<p style='color: red;'> Mật khẩu không được để trống!</p>");
-						else if("3".equals(err)) out.print("<p style='color: red;'> Địa chỉ không được để trống!</p>");
-						else if("4".equals(err)) out.print("<p style='color: red;'> Mật khẩu không trùng nhau!</p>");
-						else if("5".equals(err)) out.print("<p style='color: red;'> Mật khẩu phải bắt đầu bằng chuỗi VNE!</p>");
-					%>
-					<div class="wrap-input3 validate-input">
-						<input class="input3" type="text" name="name" placeholder="Your Username" value="<%if(!"".equals(name)) out.print(name);%>">
-						<span class="focus-input3"></span>
-					</div>
-
-					<div class="wrap-input3 validate-input" >
-						<input class="input3" type="password" name="pass" placeholder="Your Password">
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<label>Username :</label> 
+						<input class="input3" readonly value="<%=request.getAttribute("name") %>" />
 						<span class="focus-input3"></span>
 					</div>
 					
-					<div class="wrap-input3 validate-input" >
-						<input class="input3" type="password" name="repass" placeholder="Your RePassword">
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<label>Password :</label> 
+						<input class="input3" readonly value="<%=request.getAttribute("pass") %>" />
 						<span class="focus-input3"></span>
 					</div>
 					
-					<div class="wrap-input3 validate-input">
-						<input class="input3" type="text" name="address" placeholder="Your address" value="<%if(!"".equals(address)) out.print(address);%>">
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<label>Fullname :</label> 
+						<input class="input3" readonly value="<%=request.getAttribute("pass") %>" />
 						<span class="focus-input3"></span>
 					</div>
-					<div class="container-contact3-form-btn">
-						<button class="contact3-form-btn">
-							Submit
-						</button>
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<label>Address :</label> 
+						<input class="input3" readonly value="154 Pham Nhu Xuong" />
+						<span class="focus-input3"></span>
 					</div>
+					
+					
 				</form>
 			</div>
 		</div>
